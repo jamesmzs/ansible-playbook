@@ -1,0 +1,31 @@
+---
+- name: copy jdk to remote host
+  copy: src={{ src }} dest={{ dest }}
+  
+- name: unarchive jdk
+  unarchive: copy=no src={{ dest }}/{{ src }} dest={{ dest }}
+
+- name: set java mode
+  file: path={{ java_file }} mode=755
+
+- name: set profile java env
+  blockinfile:
+    path: "{{ profile }}"
+    block: | 
+      export JAVA_HOME=/root/jdk1.8.0_181
+      export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+      export PATH=$JAVA_HOME/bin:$PATH
+
+- name: set root user java env
+  blockinfile:
+    path: "{{ user_java_file }}"
+    block: | 
+      export JAVA_HOME=/root/jdk1.8.0_181
+      export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+      export PATH=$JAVA_HOME/bin:$PATH
+# 
+#- name: echo java 
+#  shell: java -version
+#  register: java_output
+#  ignore_errors: True
+#- debug: msg="{{ java_output }}"

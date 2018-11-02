@@ -1,0 +1,31 @@
+---
+- name: cp zookpeer to remote host
+  copy: src={{ src }} dest={{ dest }}
+
+- name: unarchive zookpeer.tar.gz 
+  unarchive: copy=no src={{ dest }}/{{ src }} dest={{ dest }}
+
+- name: make conf-file
+  template: 
+    src: "{{ item.name }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { name: zoo.j2, dest:  "{{ zoo_conf }}" }
+    - { name: log.j2, dest: "{{ log_conf }}"}
+    - { name: logs.j2, dest: "{{ logs_conf }}" }
+    - { name: zkserver.j2, dest: "{{ zkserver }}" }
+
+- name: create /tmp/zookeeper
+  file:
+    path: "{{ temp }}"
+    state: directory
+    mode: 0755
+
+- name: create myidfile
+  lineinfile:
+    path: "{{ myidfile }}"
+    line: "{{ id }}"
+    create: yes
+
+- name: start zk
+  shell: /usr/local/zookeeper/bin/zkServer.sh start

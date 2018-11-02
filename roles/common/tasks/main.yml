@@ -1,0 +1,24 @@
+---
+- name: stop selinux
+  lineinfile:
+    path: "{{ path }}"
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+
+- name: stop firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: update hostname
+  hostname:
+    name: "{{ host_name }}"
+
+- name: update hosts file
+  blockinfile: 
+    path: "{{ hostfile }}"
+    block: |
+      192.168.213.245 ZooKeeper-Kafka-1
+      192.168.213.247 ZooKeeper-Kafka-2
+      192.168.213.251 ZooKeeper-Kafka-3

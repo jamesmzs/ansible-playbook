@@ -1,0 +1,5 @@
+---
+src: kafka.tar.gz
+dest: /usr/local
+kafka_conf: /usr/local/kafka/config/server.properties
+

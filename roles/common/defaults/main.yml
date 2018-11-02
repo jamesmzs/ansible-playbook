@@ -1,0 +1,3 @@
+---
+path: /etc/selinux/config
+hostfile: /etc/hosts

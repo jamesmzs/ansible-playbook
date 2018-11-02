@@ -1,0 +1,4 @@
+[zk-kafka]
+node1 ansible_host=192.168.213.245
+node2 ansible_host=192.168.213.247
+node3 ansible_host=192.168.213.251

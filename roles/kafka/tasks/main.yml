@@ -1,0 +1,12 @@
+---
+- name: cp kafka to remote host
+  copy: src={{ src }} dest={{ dest }}
+
+- name: unarchive kafka.tar.gz
+  unarchive: copy=no src={{ dest }}/{{ src }} dest={{ dest }}
+
+- name: create kafaka conf
+  template: src=server.properties.j2 dest={{ kafka_conf }}
+
+- name: start kafaka
+  shell: nohup /usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties > server.out  2>&1 &

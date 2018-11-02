@@ -1,0 +1,19 @@
+---
+src: zookeeper.tar.gz
+dest: /usr/local 
+server1: ZooKeeper-Kafka-1
+server2: ZooKeeper-Kafka-2
+server3: ZooKeeper-Kafka-3
+initLimit_value: 10
+syncLimit_value: 5
+data_Dir_value: /tmp/zookeeper
+clientPort_value: 2181
+tickTime_value: 2000
+java_home: /root/jdk1.8.0_181
+zoo_conf: /usr/local/zookeeper/conf/zoo.cfg
+zkserver: /usr/local/zookeeper/bin/zkServer.sh
+myidfile: /tmp/zookeeper/myid
+temp: /tmp/zookeeper
+log_conf: /usr/local/zookeeper/bin/zkEnv.sh
+logs_conf: /usr/local/zookeeper/conf/log4j.properties
+

@@ -1,0 +1,6 @@
+---
+src: jdk.tar.gz
+dest: /root
+java_file: /root/jdk1.8.0_181/bin/java
+profile: /etc/profile
+user_java_file: /root/.bashrc
