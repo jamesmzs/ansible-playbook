@@ -1,1 +1,12 @@
-开发环境
+本工程使用了jinjia2模板，但因时间仓促，仅使用了部分语法，诸如zoo.j2 文件中
+
+{% if server1 %} 
+ server.1={{ server1 }}:{{ PORT | default(2888) }}:{{ PORTS | default(3888) }} 
+{% endif %} 
+
+后期仍可完善！！！  role { kafka， zookpeer ， jdk } 中file目录中的包未上传，若借鉴使用，请将对应的tar.gz包放到对应的file目录中。
+
+开发环境： centos 7
+ansible 版本：ansible 2.7.0
+
+
