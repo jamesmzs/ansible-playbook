@@ -1,0 +1,9 @@
+---
+- hosts: zk-kafka
+  gather_facts: true
+  remote_user: root
+  roles: 
+    - common
+    - jdk
+    - zookpeer
+    - kafka
