@@ -4,7 +4,7 @@
  server.1={{ server1 }}:{{ PORT | default(2888) }}:{{ PORTS | default(3888) }} 
 {% endif %} 
 
-后期仍可完善！！！  role { kafka， zookpeer ， jdk } 中file目录中的包未上传，若借鉴使用，请将对应的tar.gz包放到对应的file目录中。
+后期仍可完善！！！  role { kafka， zookpeer ， jdk } 中files目录未建立，file目录中的包也没有，若借鉴使用，请创建目录，将对应的tar.gz包放到对应的file目录中。
 
 开发环境： centos 7
 ansible 版本：ansible 2.7.0
